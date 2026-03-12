@@ -1,0 +1,42 @@
+[project]
+name = "tabtool"
+version = "0.1.0"
+description = "This repository contains an open source CLI for a quick pandas analysis on a dataset."
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "typer",
+    "pandas"
+]
+
+[project.optional-dependencies] 
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "pandas-stubs",
+    "build"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+
+[tool.mypy]
+python_version = "3.14"
+strict = false
+
+[project.scripts]
+tabtool = "tabtool.cli:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
